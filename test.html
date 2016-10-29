@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src="jquery-3.1.1.min.js"></script>
+<script src="lib.js"></script>
+</head>
+<body>
+
+<pre id="response">
+
+</pre>
+
+<script type="text/javascript">
+
+HiPayRequestor.sendRequest({param1: "value1", param2: "value2"}).done(function (response) {
+	console.log(response)
+	$('#response').text(JSON.stringify(response, null, 2));
+
+}).fail(function () {
+
+	$('#response').text('Loading failed...');
+
+});
+
+</script>
+
+</body>
+</html>
