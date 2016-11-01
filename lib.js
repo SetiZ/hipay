@@ -33,7 +33,7 @@ HiPayRequestor.sendRequest = function(params) {
 
   $('#form_iframe').on("load", function() {
     console.log("la")
-      $('#form_iframe').contents().find('form')[0].submit(function(event) {
+      $('#form_iframe').contents().find('form').submit(function(event) {
         event.preventDefault();
         console.log("ici")
         var req = $.ajax({
@@ -47,9 +47,9 @@ HiPayRequestor.sendRequest = function(params) {
         })
         req.fail(function() {
           result.reject();
-          console.log("la")
+          console.log("erreur")
         })
-
+        // return false
       });
   })
 
