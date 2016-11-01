@@ -21,35 +21,32 @@ HiPayRequestor.sendRequest = function(params) {
   invisible.id = "form_iframe"
   // invisible.style = "width:0;height:0;border:0px solid #fff;"
 
-  // var form = "<form id ='form' method='POST' action='"+url+"'><input name='redirect' value='"+data["redirect"]+"'><input name='data' value='"+data["data"]+"'></form>"
-
-  // invisible.src = 'data:text/html;charset=utf-8,' + encodeURI(form);
-
   invisible.src = "form.html"
-
   document.body.appendChild(invisible)
-
-  // $('#form_iframe')[0].contentDocument.write(form)
 
   $('#form_iframe').on("load", function() {
     console.log("la")
       $('#form_iframe').contents().find('form').submit(function(event) {
         event.preventDefault();
         console.log("ici")
-        var req = $.ajax({
+        $.ajax({
           method: "POST",
+          crossDomain: true,
           url: "http://test-javascript.000webhostapp.com/signParams.php",
-          data: $('#form_iframe').contents().find('form').find("input").serialize(),
+          data: {
+            data: data["data"],
+            redirect: data["redirect"],
+          },
+          // $('#form_iframe').contents().find('form').find("input").serialize(),
+          success: function(responseData, textStatus, jqXHR) {
+              console.log(responseData)
+              result.resolve()
+          },
+          error: function (responseData, textStatus, errorThrown) {
+              console.log('POST failed.');
+              result.reject()
+          }
         })
-        req.done(function (response) {
-          console.log("here", response)
-          result.resolve(response)
-        })
-        req.fail(function() {
-          result.reject();
-          console.log("erreur")
-        })
-        // return false
       });
   })
 

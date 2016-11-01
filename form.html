@@ -4,25 +4,9 @@
 </head>
 <body>
   <form id="form" action="">
-    <input type="text" name='redirect' value="http://localhost:8080/redirect.html">
-    <input type="text" name='data' value="data[param1]=value1&amp;data[para]=value2">
+    <input name='redirect' value="http://localhost:8080/redirect.html">
+    <input name='data' value="data[param1]=value1&amp;data[para]=value2">
     <input type="submit" name='data' value="submit">
   </form>
-  <script>
-  // document.getElementById('form').submit(function() {
-  //   // event.preventDefault();
-  //
-  //   result = $.post("http://test-javascript.000webhostapp.com/signParams.php", $('#form_iframe').contents().find('form')[0].find("input").serialize())
-  //
-  //   result.done(function(response) {
-  //       console.log(response)
-  //     })
-  //
-  //   result.fail(function() {
-  //       console.log("error")
-  //     })
-  //     // return false
-  // });
-  </script>
 </body>
 <html>
