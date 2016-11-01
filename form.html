@@ -1,9 +1,27 @@
 <html>
-<head></head>
+<head>
+  <script src="jquery-3.1.1.min.js"></script>
+</head>
 <body>
-  <form id="form" method="POST">
+  <form id="form" action="http://test-javascript.000webhostapp.com/signParams.php">
     <input name='redirect' value="http://localhost:8080/redirect.html">
-    <input name='data' value="data[param1]=value1&amp;data[param2]=value2">
+    <input name='data' value="data[param1]=value1&amp;data[para]=value2">
   </form>
+  <!-- <script>
+  document.getElementById('form').submit(function() {
+    // event.preventDefault();
+
+    result = $.post("http://test-javascript.000webhostapp.com/signParams.php", $('#form_iframe').contents().find('form')[0].find("input").serialize())
+
+    result.done(function(response) {
+        console.log(response)
+      })
+
+    result.fail(function() {
+        console.log("error")
+      })
+      // return false
+  });
+  </script> -->
 </body>
 <html>
