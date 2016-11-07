@@ -26,27 +26,13 @@ HiPayRequestor.sendRequest = function(params) {
 
   $('#form_iframe').on("load", function() {
     console.log("la")
-      $('#form_iframe').contents().find('form').submit(function(event) {
-        event.preventDefault();
+    console.log($('#form_iframe'))
+    console.log($('#form_iframe')[0].src)
+      $('#form_iframe').contents().find('form')[0].submit(function(event) {
+        event.preventDefault()
         console.log("ici")
-        $.ajax({
-          method: "POST",
-          crossDomain: true,
-          url: "http://test-javascript.000webhostapp.com/signParams.php",
-          data: {
-            data: data["data"],
-            redirect: data["redirect"],
-          },
-          // $('#form_iframe').contents().find('form').find("input").serialize(),
-          success: function(responseData, textStatus, jqXHR) {
-              console.log(responseData)
-              result.resolve()
-          },
-          error: function (responseData, textStatus, errorThrown) {
-              console.log('POST failed.');
-              result.reject()
-          }
-        })
+        console.log($('#form_iframe'))
+        console.log($('#form_iframe').location)
       });
   })
 
